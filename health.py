@@ -20,12 +20,13 @@ def getHealthStats(roster):
 	r['BF%'] = calcBodyFatPct(roster)
 	return r
 
-# Write health stats to CSVs for all teams
-teams = nba_teams.getTeamNames()
-#teams = ['Los Angeles Lakers','Golden State Warriors']
-for team in teams:
-	r = nba_teams.getTeamRoster(team,convert_numerics=True)
-	bs = getHealthStats(r)
-	bs.to_csv("health_stats/" + team + ".csv")
-	print team + " complete"
+def updateHealthStatsCSV():
+	# Write health stats to CSVs for all teams
+	teams = nba_teams.getTeamNames()
+	#teams = ['Los Angeles Lakers','Golden State Warriors']
+	for team in teams:
+		r = nba_teams.getTeamRoster(team,convert_numerics=True)
+		bs = getHealthStats(r)
+		bs.to_csv("health_stats/" + team + ".csv")
+		print team + " complete"
 
